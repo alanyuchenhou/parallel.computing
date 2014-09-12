@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+executable="helloworld"
+mpicc -o $executable.app $executable.c
+mpiexec -machinefile $HOME/machinefile.txt -n 4 ./$executable.app

@@ -1,0 +1,30 @@
+2.1
+speedup S = w / T(n,p)
+serial work w = n
+parallel time T(n,p) = n / p + log2(p)
+therefore
+S = n / (n / p + log2(p))
+
+2.2
+efficiency E = S / p
+therefore
+E = n / (n + p * log2(p))
+
+2.3
+overhead T_0(n,p) = p * T(n,p) - w
+therefore
+T_0(n,p) = p * (n / p + log2(p)) - n = n + p * log2(p) -n = p * log2(p)
+
+2.4
+isoefficiency function w = K * T_0(n,p)
+where
+isoefficiency constant K = E / (1 - E) = 1 / (1/E -1) = n/(p* log2(p))
+(an alternatively calculation for isoefficiency constant K = w/T_0(n,p) = n/(p* log2(p)))
+
+2.5
+old serial work w(p) = K * T_0(n1,p) = n1
+new serial work w(2p) = K * T_0(n2,2p) = n2
+therefore, the serial work scaling is
+w(2p) / w(p) = T_0(n2,2p) / T_0(n1,p) = (2p * log2(2p)) / (p * log2(p)) = 2 * (1 + 1/log2(p))
+the input size scaling equals the serial work scaling
+n2 / n1 = w(2p) / w(p) = 2 * (1 + 1/log2(p))
