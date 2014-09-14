@@ -6,3 +6,4 @@ executable="project1"
 processCount=8
 mpicc -o $executable.app $executable.c -g -W -Wall -Wextra -pedantic -Werror -std=c99
 mpiexec -machinefile $HOME/machinefile.txt -n $processCount ./$executable.app $processCount >> $record
+cat result.tsv

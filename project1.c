@@ -23,21 +23,25 @@ int main(int argc,char *argv[]) {
   assert(p>=8);
   for (int size = 1; size < sizeLimit; size *= 2) {
     for (int i = 0; i < testCount; i++) {
+      MPI_Barrier (MPI_COMM_WORLD);
       int tag = size;
       if (rank == source) {
-	MPI_Barrier (MPI_COMM_WORLD);
+	/* MPI_Barrier (MPI_COMM_WORLD); */
+	gettimeofday(&t1,NULL);
 	MPI_Send(&message, size, MPI_CHAR, destination, tag, MPI_COMM_WORLD);
+	gettimeofday(&t2,NULL);
+	totalTime += (convertTime(t2) - convertTime(t1));
       }
       else if (rank == destination) {
 	MPI_Status status;
-	MPI_Barrier (MPI_COMM_WORLD);
+	/* MPI_Barrier (MPI_COMM_WORLD); */
 	gettimeofday(&t1,NULL);
 	MPI_Recv(&message, size, MPI_CHAR, source, tag, MPI_COMM_WORLD, &status);
 	gettimeofday(&t2,NULL);
 	totalTime += (convertTime(t2) - convertTime(t1));
       }
       else {
-	MPI_Barrier (MPI_COMM_WORLD);
+	/* MPI_Barrier (MPI_COMM_WORLD); */
       }
     }
     if (rank == destination) {

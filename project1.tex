@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{tabularx}
+\usepackage{graphicx} % Required for the inclusion of images
+\begin{document}
+\title{Cpt S 483 Assignment Cover Sheet \\ Fall 2014
+}
+\author{Yuchen Hou}
+\maketitle
+
+(To be turned in along with each homework and program project submission)
+
+Assignment: project 1
+
+For individual assignments:
+
+Student name (Last, First): Hou, Yuchen
+
+For team projects:
+
+List of all students (Last, First):
+
+List of collaborative personnel (excluding team participants):
+
+I certify that I have listed above all the sources that I consulted regarding this assignment, and that I have not received or given any assistance that is contrary to the letter or the spirit of the collaboration guidelines for this assignment. (print name here if using a word processor).
+
+Assignment Project Participant(s): Hou, Yuchen
+
+Today's Date: \today
+
+\pagebreak
+
+\section{data}
+
+The communication time between two processes for messages of different sizes is shown in Figure \ref{fig:result}, which can be used to empirically estimate the network parameters: latency and bandwidth of the computer cluster. Every data point is measured 100 times and the average value is shown in the figure.
+\begin{figure}[htb]
+  \centering
+      {\includegraphics[width=1\linewidth]{result.png}} \rule{1\linewidth}{1pt}
+      \caption{Communication time between two processes. Log scale is set on both axes to show the large range of the data.}
+      \label{fig:result}
+\end{figure}
+The original data is below:
+\lstinputlisting{result.tsv}
+\section{estimation of latency and bandwidth}
+
+The commutication time for 1B message is 75 microseconds, so latency is obviously less than 75 microseconds. Therefore, in the communicatioin time for 65536B message, which is 13720 microseconds, the latency is negligible. This can be used to estimate the bandwidth (with latency neglected):
+\begin{align*}
+  bandwidth &= \frac{message.size}{communication.time}\\
+  &= \frac{65536}{13720}\\
+  &= 4.776 (B/microsecond)\\
+  &= 4.776 (MB/s)\\
+\end{align*}
+
+The latency can be estimated using 1B message which costs 74 microsecond:
+
+\begin{align*}
+  latency &= communication.time - \frac{message.size}{bandwidth}\\
+  &= 74 - \frac{1}{4.776}\\
+  &= 73.79 (microsecond)\\
+\end{align*}
+
+
+\end{document}
