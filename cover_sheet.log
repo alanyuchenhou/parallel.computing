@@ -1,7 +1,7 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.5.16)  5 OCT 2014 16:33
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.5.16)  6 NOV 2014 19:52
 entering extended mode
  %&-line parsing enabled.
-**cover_sheet.tex
+**cover_sheet
 (./cover_sheet.tex
 LaTeX2e <2005/12/01>
 Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -184,8 +184,7 @@ File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
 ))
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
-)
-No file cover_sheet.aux.
+) (./cover_sheet.aux)
 \openout1 = `cover_sheet.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -200,21 +199,22 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
+
 [1
 
 {/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./cover_sheet.aux) ) 
 Here is how much of TeX's memory you used:
- 2854 strings out of 256216
- 38464 string characters out of 1917072
+ 2856 strings out of 256216
+ 38496 string characters out of 1917072
  94285 words of memory out of 1500000
  6150 multiletter control sequences out of 10000+200000
  6222 words of font info for 23 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 33i,6n,32p,308b,218s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 33i,6n,32p,304b,218s stack positions out of 5000i,500n,6000p,200000b,15000s
 </u
 sr/share/texmf/fonts/type1/bluesky/cm/cmss12.pfb></usr/share/texmf/fonts/type1/
 bluesky/cm/cmss17.pfb>
-Output written on cover_sheet.pdf (1 page, 14907 bytes).
+Output written on cover_sheet.pdf (1 page, 15068 bytes).
 PDF statistics:
  14 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\begin{document}
+\title{Cpt S 483 Assignment Cover Sheet \\ Fall 2014
+}
+\author{Yuchen Hou}
+\maketitle
+
+(To be turned in along with each homework and program project submission)
+
+Assignment: homework4
+
+For individual assignments:
+
+Student name (Last, First):
+
+For team projects:
+
+List of all students (Last, First):
+
+List of collaborative personnel (excluding team participants):
+
+I certify that I have listed above all the sources that I consulted regarding this assignment, and that I have not received or given any assistance that is contrary to the letter or the spirit of the collaboration guidelines for this assignment. (print name here if using a word processor).
+
+Assignment Project Participant(s): Hou, Yuchen
+
+Today's Date: \today
+
+\pagebreak
+
+\section{Algorithm}
+An efficient parallel counting sort algorithm is expressed in the form of pseudocode below.
+\begin{enumerate}
+  \item processor[i] sorts its local array A[i] using counting sort;\\
+    the frequency of integer k in A[i] is stored as local-frequency[k];
+  \item an allgather communication sends every local-frequency from processor[i] to all other processors;
+  \item every processor reduces the local-frequencies to get gloabel-frequency: global-frequency[k] = sum of every local-frequency[k];
+  \item every processor calculates the global-start-index for integer k: global-index = prefixsum(global-frequency);
+  \item every processor calculates the destination processor for integer k (the processor that should store integer k): destination[k] = global-index[k]/(n/p);
+  \item processor[i] partitions A[i] into p parts where part[j] contains integers in A[i] with destination = j;
+  \item an alltoallv communication sends part[j] in A[i] to processor[j];
+  \item processor[j] sorts all the part[j]s it received into a sorted array B[j];
+\end{enumerate}
+The final sorted array is the concatenation of B[j].
+
+\section{Time complexity}
+The time complexity is shown in Table \ref{tab:complexity}.
+\begin{table}[htb]
+  \centering
+  \begin{tabularx}{\textwidth}{|l|l|X|} \hline
+    step & computation time & communication time \\ \hline
+    1 & $O(\frac{n}{p}+c)$ & 0  \\ \hline
+    2 & 0 & $O(\tau p + \mu p^2)$ \\ \hline
+    3 & $O(c)$ & 0 \\ \hline
+    4 & $O(c)$ & 0 \\ \hline
+    5 & $O(c)$ & 0 \\ \hline
+    6 & $O(\frac{n}{p})$ & 0 \\ \hline
+    7 & 0 & $O(\tau p + \mu \frac{n}{p})$ \\ \hline
+    8 & $O(\frac{n}{p}+c)$ & 0 \\ \hline
+    total & $O(\frac{n}{p}+c)$ & $O(\tau p + \mu (p^2+\frac{n}{p}))$ \\ \hline
+  \end{tabularx}
+  \caption{The parallel time complexity analysis of counting sort}
+  \label{tab:complexity}
+\end{table}
+
+
+\end{document}
