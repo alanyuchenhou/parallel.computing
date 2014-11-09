@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
   omp_set_num_threads(thread_count);
   double radius = 1;
   double side = radius*2;
-  double time1 = omp_get_wtime();
   unsigned count = 0;
   long satisfied_sample = 0;
+  double time1 = omp_get_wtime();
 #pragma omp parallel shared(thread_count, side, input_size) private(count) reduction(+:satisfied_sample)
   {
     int granted_thread_count=omp_get_num_threads();
@@ -53,6 +53,6 @@ int main(int argc, char *argv[])
       pi = static_cast<double>(satisfied_sample)/input_size*4;
       double time2 = omp_get_wtime();
       double time = time2-time1;
-      printf("%16d %16ld %16f \n", thread_count, input_size, time);
+      printf("%16d,%16ld,%16f,%16f \n", thread_count, input_size, time, pi);
   return 0;
 }

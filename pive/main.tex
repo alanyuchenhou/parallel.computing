@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\begin{document}
+\title{Cpt S 483 Assignment Cover Sheet \\ Fall 2014
+}
+\author{Yuchen Hou}
+\maketitle
+
+(To be turned in along with each homework and program project submission)
+
+Assignment: project 5
+
+For individual assignments:
+
+Student name (Last, First):
+
+For team projects:
+
+List of all students (Last, First):
+
+List of collaborative personnel (excluding team participants):
+
+I certify that I have listed above all the sources that I consulted regarding this assignment, and that I have not received or given any assistance that is contrary to the letter or the spirit of the collaboration guidelines for this assignment. (print name here if using a word processor).
+
+Assignment Project Participant(s): Hou, Yuchen;
+
+Today's Date: \today
+
+\pagebreak
+
+\section{Runtime}
+The total runtime and pi value for different thread counts and input sizes is listed below:
+\lstinputlisting{data.csv}
+
+\section{Speedup}
+\begin{figure}%% [htb]
+  \centering
+      {\includegraphics[width=1\linewidth]{data.png}} \rule{1\linewidth}{1pt}
+      \caption{Speedup for various thread counts and input sizes. Log scale is set on x axe to show the large range of the data.}
+      \label{fig:data}
+\end{figure}
+The speedup is shown in Figure \ref{fig:data}. Both 2 thread and 4 thread execution achieve significant speedup for large enough input sizes. The speedup for 2 thread execution exceeds that of 1 thread execution at input size 4k and then approaches maximum 2 at input size 64k. The speedup for 4 thread execution exceeds that of 2 tread execution at input size 1M and then approaches maximum 3.5 at size 671M. Although the speedup for 4 thread execution has fluctuations, the 2 speedup lines are both reasonable.
+
+\end{document}

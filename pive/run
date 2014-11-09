@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -e
 make -j
-# export OMP_PROC_BIND=true # processor binding activated; use with care
-data_file=data.tsv
+export OMP_PROC_BIND=true # processor binding activated; use with care
+data_file=data.csv
 > $data_file
-printf "    thread_count       input_size          runtime \n" >> $data_file
+printf "    thread_count,      input_size,         runtime,              pi \n" >> $data_file
 for ((thread_count=1; thread_count<=4; thread_count=thread_count*2))
 do
-    for ((input_size=1024; input_size<100000000; input_size*=4))
+    for ((input_size=1024; input_size<1000000000; input_size*=4))
     do
-	main.out ${thread_count} $input_size >> $data_file 2>error.log
-	# export GOMP_CPU_AFFINITY=0-${thread_count} # threads bound to cpus
+	main.out $thread_count $input_size >> $data_file 2>error.log
+	export GOMP_CPU_AFFINITY=0-${thread_count} # threads bound to cpus
 	# export OMP_NUM_THREADS=${thread_count}
     done
 done
